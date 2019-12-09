@@ -40,4 +40,6 @@ object Mocks {
             leaderboard
         )
     )
+
+    var summaries = rooms.map { Summary(it.id, it.categories) }
 }
