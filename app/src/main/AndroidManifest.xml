@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Activities.RoomInfo"
+            android:label="@string/title_activity_room_info"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Activities.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:parentActivityName=".MainActivity"

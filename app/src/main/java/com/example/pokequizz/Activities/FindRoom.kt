@@ -1,5 +1,6 @@
 package com.example.pokequizz.Activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,16 +13,14 @@ import com.example.pokequizz.ApiHelper.Entities.Summary
 
 class FindRoom : AppCompatActivity() {
 
-    private val onItemClickListener = View.OnClickListener { view ->
-        val viewHolder = view.tag as RecyclerView.ViewHolder
-        val position = viewHolder.adapterPosition
-        println(position)
-    }
+    private var rooms : List<Summary> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_find_room)
 
+        this.rooms = getRooms()
+
+        setContentView(R.layout.activity_find_room)
         setSupportActionBar(findViewById(R.id.find_room_toolbar))
         setRecyclerView()
     }
@@ -32,12 +31,19 @@ class FindRoom : AppCompatActivity() {
         /* Set recycler view size as fixed for performance */
         recyclerView.setHasFixedSize(true)
 
-        recyclerView.adapter = FindRoomAdapter(rooms(), this, onItemClickListener)
+        recyclerView.adapter = FindRoomAdapter(rooms, this, onItemClickListener)
         val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = layoutManager
     }
 
-    private fun rooms(): List<Summary> {
-        return getRooms()
+    private val onItemClickListener = View.OnClickListener { view ->
+        val viewHolder = view.tag as RecyclerView.ViewHolder
+        val room = this.rooms[viewHolder.adapterPosition]
+
+        val intent = Intent(this, RoomInfo::class.java)
+        val b = Bundle()
+        b.putString("room_id", room.id)
+        intent.putExtras(b)
+        startActivity(intent)
     }
 }
