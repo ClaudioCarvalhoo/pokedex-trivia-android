@@ -13,7 +13,7 @@
         card_view:cardElevation="2dp">
 
         <TextView
-            android:id="@+id/roomId"
+            android:id="@+id/room_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"

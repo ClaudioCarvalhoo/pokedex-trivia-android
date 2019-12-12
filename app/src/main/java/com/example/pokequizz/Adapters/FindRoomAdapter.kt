@@ -9,13 +9,15 @@ import com.example.pokequizz.ApiHelper.Entities.Summary
 import com.example.pokequizz.R
 import kotlinx.android.synthetic.main.find_room_item.view.*
 
-class FindRoomAdapter(private val rooms: List<Summary>, private val context: Context) : RecyclerView.Adapter<FindRoomAdapter.ViewHolder>() {
+class FindRoomAdapter(
+    private val rooms: List<Summary>,
+    private val context: Context,
+    private val onItemClickListener: View.OnClickListener)
+    : RecyclerView.Adapter<FindRoomAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val room = rooms[position]
-        holder?.let {
-            it.roomId.text = room.id
-        }
+        holder.bindView(room, onItemClickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,6 +30,12 @@ class FindRoomAdapter(private val rooms: List<Summary>, private val context: Con
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val roomId = itemView.roomId
+        fun bindView(room: Summary, clickListener: View.OnClickListener) {
+            val roomId = itemView.room_id
+            roomId.text = room.id
+
+            itemView.setTag(this)
+            itemView.setOnClickListener(clickListener)
+        }
     }
 }
