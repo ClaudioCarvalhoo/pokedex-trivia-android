@@ -18,14 +18,14 @@ class FindRoom : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.find_room_toolbar))
 
-        val rv = findViewById<RecyclerView>(R.id.find_room_rv)
+        val recyclerView = findViewById<RecyclerView>(R.id.find_room_rv)
 
         /* Fix recylcler view size for performance */
-        rv.setHasFixedSize(true)
+        recyclerView.setHasFixedSize(true)
 
-        rv.adapter = FindRoomAdapter(rooms(), this)
-        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        rv.layoutManager = layoutManager
+        recyclerView.adapter = FindRoomAdapter(rooms(), this)
+        val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager = layoutManager
     }
 
     private fun rooms(): List<Summary> {
