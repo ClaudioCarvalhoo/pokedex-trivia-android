@@ -38,7 +38,44 @@ object Mocks {
             questions,
             categories,
             leaderboard
+        ),
+        Room(
+            "3",
+            questions,
+            categories,
+            leaderboard
+        ),
+        Room(
+            "4",
+            questions,
+            categories,
+            leaderboard
+        ),
+        Room(
+            "5",
+            questions,
+            categories,
+            leaderboard
+        ),
+        Room(
+            "6",
+            questions,
+            categories,
+            leaderboard
+        ),
+        Room(
+            "7",
+            questions,
+            categories,
+            leaderboard
+        ),
+        Room(
+            "8",
+            questions,
+            categories,
+            leaderboard
         )
+
     )
 
     var summaries = rooms.map { Summary(it.id, it.categories) }
