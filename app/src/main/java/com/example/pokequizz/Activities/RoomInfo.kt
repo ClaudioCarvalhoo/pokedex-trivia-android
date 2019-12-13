@@ -6,10 +6,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pokequizz.Activities.ui.main.SectionsPagerAdapter
+import com.example.pokequizz.Adapters.SectionsPagerAdapter
 import com.example.pokequizz.ApiHelper.ApiHelper
 import com.example.pokequizz.ApiHelper.Entities.Room
 import com.example.pokequizz.R
+import kotlinx.android.synthetic.main.activity_room_info.*
 
 class RoomInfo : AppCompatActivity() {
 
@@ -21,8 +22,9 @@ class RoomInfo : AppCompatActivity() {
         setRoom()
 
         setContentView(R.layout.activity_room_info)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
+        val sectionsPagerAdapter =
+            SectionsPagerAdapter(this, supportFragmentManager)
+        val viewPager: ViewPager = view_pager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)

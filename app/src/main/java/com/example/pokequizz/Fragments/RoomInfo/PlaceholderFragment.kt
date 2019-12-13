@@ -1,4 +1,4 @@
-package com.example.pokequizz.Activities.ui.main
+package com.example.pokequizz.Fragments.RoomInfo
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.pokequizz.ViewModels.PageViewModel
 import com.example.pokequizz.R
 
 /**
@@ -28,7 +29,7 @@ class PlaceholderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_room_info, container, false)
+        val root = inflater.inflate(R.layout.fragment_room_info_general, container, false)
         val textView: TextView = root.findViewById(R.id.section_label)
         pageViewModel.text.observe(this, Observer<String> {
             textView.text = it
