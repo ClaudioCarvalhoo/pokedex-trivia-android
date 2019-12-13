@@ -57,12 +57,16 @@ class RoomInfo : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = fab
 
-        fab.setOnClickListener { view ->
-            val intent = Intent(this, Questions::class.java)
-            val bundle = Bundle()
-            bundle.putSerializable("questions", room?.questions as Serializable)
-            intent.putExtras(bundle)
-            startActivity(intent)
+        fab.setOnClickListener {
+            changeActivity()
         }
+    }
+
+    private fun changeActivity() {
+        val intent = Intent(this, Questions::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("questions", room?.questions as Serializable)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

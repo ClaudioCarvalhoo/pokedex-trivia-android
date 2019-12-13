@@ -8,6 +8,7 @@ import com.example.pokequizz.Adapters.QuestionsAdapter
 import com.example.pokequizz.ApiHelper.Entities.Question
 import com.example.pokequizz.Fragments.Questions.QuestionsFragment
 import com.example.pokequizz.R
+import kotlinx.android.synthetic.main.questions_activity.*
 
 class Questions : AppCompatActivity() {
 
@@ -17,16 +18,20 @@ class Questions : AppCompatActivity() {
 
         val bundle = intent.extras
         val questions = bundle?.getSerializable("questions") as List<Question>
+        val questionSteps = questions.map { "" }
+
+        step_view.setSteps(questionSteps)
 
 //        if (savedInstanceState == null) {
 //            val questionsAdapter =
 //                QuestionsAdapter(this, supportFragmentManager, questions)
+//
 //            val viewPager: ViewPager = view_pager
 //            viewPager.adapter = roomInfoAdapter
 //            val tabs: TabLayout = tabs
 //            tabs.setupWithViewPager(viewPager)
 //        }
-//
+
 //        if (savedInstanceState == null) {
 //            supportFragmentManager.beginTransaction()
 //                .replace(R.id.container, QuestionsFragment.newInstance())
