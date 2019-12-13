@@ -8,7 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pokequizz.Adapters.SectionsPagerAdapter
+import com.example.pokequizz.Adapters.RoomInfoAdapter
 import com.example.pokequizz.ApiHelper.Entities.Room
 import com.example.pokequizz.R
 import com.example.pokequizz.ApiHelper.RetrofitFacade
@@ -42,16 +42,16 @@ class RoomInfo : AppCompatActivity() {
 
             override fun onFailure(call: Call<Room?>?,
                                    t: Throwable?) {
-                Log.e("onFailure error", t?.message)
+                Log.e("onFailure error", t?.message ?: "Unknown error")
             }
         })
     }
 
     private fun setRoomInfoView(room: Room?) {
-        val sectionsPagerAdapter =
-            SectionsPagerAdapter(this, supportFragmentManager)
+        val roomInfoAdapter =
+            RoomInfoAdapter(this, supportFragmentManager, room)
         val viewPager: ViewPager = view_pager
-        viewPager.adapter = sectionsPagerAdapter
+        viewPager.adapter = roomInfoAdapter
         val tabs: TabLayout = tabs
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = fab

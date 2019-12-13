@@ -11,18 +11,17 @@
         android:layout_marginBottom="1dp"
         android:focusable="auto"
         android:focusableInTouchMode="true"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="2dp"
         android:foreground="?android:attr/selectableItemBackground"
-        >
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="2dp">
 
         <TextView
             android:id="@+id/room_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:paddingLeft="8dp"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
             android:paddingEnd="0dp"
             android:paddingRight="0dp"
             android:paddingBottom="15dp"
@@ -33,12 +32,12 @@
 
         <TextView
             android:id="@+id/find_room_categories"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:ellipsize="end"
             android:gravity="bottom"
-            android:paddingStart="8dp"
-            android:paddingLeft="8dp"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
             android:paddingEnd="0dp"
             android:paddingRight="0dp"
             android:paddingBottom="4dp"
