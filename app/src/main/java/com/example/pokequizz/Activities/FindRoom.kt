@@ -11,7 +11,6 @@ import com.example.pokequizz.Adapters.FindRoomAdapter
 import com.example.pokequizz.R
 import com.example.pokequizz.ApiHelper.Entities.Summary
 import com.example.pokequizz.ApiHelper.RetrofitFacade
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_find_room.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,8 +33,8 @@ class FindRoom : AppCompatActivity() {
                     rooms = it
                 }
 
-                find_room_loading.visibility = View.INVISIBLE
                 setRecyclerView(rooms)
+                find_room_loading.visibility = View.INVISIBLE
             }
 
             override fun onFailure(call: Call<List<Summary>?>?,
