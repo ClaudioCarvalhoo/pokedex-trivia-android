@@ -8,10 +8,11 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.pokequizz.Adapters.FindRoomAdapter
-import com.example.pokequizz.ApiHelper.Entities.Room
 import com.example.pokequizz.R
 import com.example.pokequizz.ApiHelper.Entities.Summary
 import com.example.pokequizz.ApiHelper.RetrofitFacade
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_find_room.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +23,8 @@ class FindRoom : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_find_room)
+        setSupportActionBar(find_room_toolbar)
 
         val call = RetrofitFacade.retrofit.getRooms()
         call.enqueue(object: Callback<List<Summary>?> {
@@ -31,27 +34,24 @@ class FindRoom : AppCompatActivity() {
                     rooms = it
                 }
 
-                setContentView(R.layout.activity_find_room)
-                setSupportActionBar(findViewById(R.id.find_room_toolbar))
+                find_room_loading.visibility = View.INVISIBLE
                 setRecyclerView(rooms)
             }
 
             override fun onFailure(call: Call<List<Summary>?>?,
                                    t: Throwable) {
-                Log.e("onFailure error", t?.message)
+                Log.e("onFailure error", t.message.toString())
             }
         })
     }
 
     private fun setRecyclerView(rooms: List<Summary>) {
-        val recyclerView = findViewById<RecyclerView>(R.id.find_room_rv)
+        /* Set fixed recycler size for performance */
+        find_room_rv.setHasFixedSize(true)
 
-        /* Set recycler view size as fixed for performance */
-        recyclerView.setHasFixedSize(true)
-
-        recyclerView.adapter = FindRoomAdapter(rooms, this, onItemClickListener)
+        find_room_rv.adapter = FindRoomAdapter(rooms, this, onItemClickListener)
         val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-        recyclerView.layoutManager = layoutManager
+        find_room_rv.layoutManager = layoutManager
     }
 
     private val onItemClickListener = View.OnClickListener { view ->

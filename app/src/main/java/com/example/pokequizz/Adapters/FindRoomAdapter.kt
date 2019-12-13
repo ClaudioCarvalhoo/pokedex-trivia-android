@@ -32,7 +32,12 @@ class FindRoomAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(room: Summary, clickListener: View.OnClickListener) {
             val roomId = itemView.room_id
-            roomId.text = room.id
+            val categories = itemView.find_room_categories
+
+            roomId.text = "Room #${room.id}"
+            categories.text = room.categories.map {
+                it.name
+            }.joinToString(separator = " • ")
 
             itemView.setTag(this)
             itemView.setOnClickListener(clickListener)

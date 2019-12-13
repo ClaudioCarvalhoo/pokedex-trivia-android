@@ -2,6 +2,7 @@ package com.example.pokequizz.Activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -22,6 +23,8 @@ class RoomInfo : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_room_info)
+
         val b = intent.extras
         var roomId = b?.getString("room_id").toString()
 
@@ -33,19 +36,8 @@ class RoomInfo : AppCompatActivity() {
                     room = it
                 }
 
-                setContentView(R.layout.activity_room_info)
-                val sectionsPagerAdapter =
-                    SectionsPagerAdapter(this@RoomInfo, supportFragmentManager)
-                val viewPager: ViewPager = view_pager
-                viewPager.adapter = sectionsPagerAdapter
-                val tabs: TabLayout = findViewById(R.id.tabs)
-                tabs.setupWithViewPager(viewPager)
-                val fab: FloatingActionButton = findViewById(R.id.fab)
-
-                fab.setOnClickListener { view ->
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show()
-                }
+                room_info_loading.visibility = View.INVISIBLE
+                setRoomInfoView(room)
             }
 
             override fun onFailure(call: Call<Room?>?,
@@ -53,5 +45,20 @@ class RoomInfo : AppCompatActivity() {
                 Log.e("onFailure error", t?.message)
             }
         })
+    }
+
+    private fun setRoomInfoView(room: Room?) {
+        val sectionsPagerAdapter =
+            SectionsPagerAdapter(this, supportFragmentManager)
+        val viewPager: ViewPager = view_pager
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = tabs
+        tabs.setupWithViewPager(viewPager)
+        val fab: FloatingActionButton = fab
+
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
     }
 }

@@ -1,11 +1,13 @@
 package com.example.pokequizz.ApiHelper.Entities
 
-class Category(category: String, subcategories: Array<Category>) {
-    var category: String
+class Category(id: String, name: String, subcategories: Array<Category>) {
+    var id: String
+    var name: String
     var subcategories: Array<Category>
 
     init {
-        this.category = category
+        this.id = id
+        this.name = name
         this.subcategories = subcategories
     }
 }

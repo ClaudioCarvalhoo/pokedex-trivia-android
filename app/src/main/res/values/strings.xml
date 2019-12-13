@@ -12,4 +12,6 @@
     <string name="tab_text_3">LEADERBOARD</string>
     <string name="id_placeholder">16</string>
     <string name="num_of_questions_placeholder">24 questions</string>
+    <string name="find_room_id_ph">Room #22</string>
+    <string name="find_room_categories_ph">POKEMON-NAMES, ITEM-NAMES, POKEMON-TYPES, POKEMON-ABILITIES, ITEM-EFFECTS</string>
 </resources>
