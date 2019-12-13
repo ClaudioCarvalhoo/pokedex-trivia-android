@@ -1,13 +1,10 @@
 package com.example.pokequizz.ApiHelper.Entities
 
-class Question(id: String, stem: String, alternatives: Array<Alternative>) {
-    var id: String
-    var stem: String
-    var alternatives: Array<Alternative>
+import java.io.Serializable
 
-    init {
-        this.id = id
-        this.stem = stem
-        this.alternatives = alternatives
-    }
+class Question(id: String, stem: String, imageUrl: String, alternatives: List<Alternative>) : Serializable {
+    val id = id
+    val stem = stem
+    val imageUrl = imageUrl
+    val alternatives = alternatives
 }

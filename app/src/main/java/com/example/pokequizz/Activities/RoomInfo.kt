@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_room_info.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.Intent
+import java.io.Serializable
 
 class RoomInfo : AppCompatActivity() {
 
@@ -57,8 +58,11 @@ class RoomInfo : AppCompatActivity() {
         val fab: FloatingActionButton = fab
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(this, Questions::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable("questions", room?.questions as Serializable)
+            intent.putExtras(bundle)
+            startActivity(intent)
         }
     }
 }
