@@ -1,9 +1,9 @@
 package com.example.pokequizz.ApiHelper.Entities
 
-class Room(id: String, questions: Array<Question>, categories: Array<Category>, leaderboard: Array<Entry>) {
+class Room(id: String, questions: Array<Question>, categories: List<String>, leaderboard: Array<Entry>) {
     var id: String
     var questions: Array<Question>
-    var categories: Array<Category>
+    var categories: List<String>
     var leaderboard: Array<Entry>
 
     init {

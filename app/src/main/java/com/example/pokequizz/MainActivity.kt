@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.content.Intent
 import kotlinx.android.synthetic.main.activity_main.*
 import com.example.pokequizz.Activities.FindRoom
+import com.example.pokequizz.ApiHelper.RetrofitInitializer
 
 class MainActivity : AppCompatActivity() {
 
