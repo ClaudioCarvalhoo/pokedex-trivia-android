@@ -17,16 +17,6 @@
             android:label="@string/title_activity_room_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Activities.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pokequizz.MainActivity" />
-        </activity>
-        <activity android:name=".Activities.FindRoom2" />
-        <activity
             android:name=".Activities.FindRoom"
             android:label="@string/title_activity_find_room"
             android:parentActivityName=".MainActivity"
@@ -35,7 +25,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.pokequizz.MainActivity" />
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

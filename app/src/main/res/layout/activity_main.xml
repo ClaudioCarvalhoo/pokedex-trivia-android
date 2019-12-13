@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -19,27 +20,17 @@
         app:srcCompat="@drawable/full_logo" />
 
     <Button
-        android:id="@+id/createRoomBttn"
-        android:layout_width="137dp"
+        android:id="@+id/play_button"
+        android:layout_width="150dp"
         android:layout_height="62dp"
-        android:layout_marginTop="424dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginRight="136dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginRight="128dp"
         android:backgroundTint="@color/colorPrimary"
-        android:text="@string/create_room"
+        android:text="@string/play"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/findRoomBttn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="492dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginRight="148dp"
-        android:text="@string/find_room"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView"
@@ -47,8 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="52dp"
         android:text="@string/credits"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
