@@ -11,6 +11,7 @@
         android:id="@+id/step_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         android:padding="16dp"
         app:sv_animationType="Line"
         app:sv_doneCircleColor="@color/colorPrimary"
@@ -27,4 +28,28 @@
         app:sv_stepNumberTextSize="12sp"
         app:sv_stepPadding="4dp"
         app:sv_stepViewStyle="@style/StepView" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_questions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <Button
+        android:id="@+id/next_question"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:enabled="true"
+        android:text="@string/next_question"
+        android:textColor="@color/colorPrimary"
+        android:textColorHighlight="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textColorLink="@android:color/white"
+        android:textCursorDrawable="@android:color/white"
+        android:textSize="20dp" />
+
 </FrameLayout>
