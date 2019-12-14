@@ -2,6 +2,7 @@ package com.example.pokequizz.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager.widget.ViewPager
 import com.example.pokequizz.Adapters.QuestionsAdapter
 import com.example.pokequizz.ApiHelper.Entities.Question
