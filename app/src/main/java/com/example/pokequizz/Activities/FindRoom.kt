@@ -12,6 +12,7 @@ import com.example.pokequizz.R
 import com.example.pokequizz.ApiHelper.Entities.Summary
 import com.example.pokequizz.ApiHelper.RetrofitFacade
 import kotlinx.android.synthetic.main.activity_find_room.*
+import org.jetbrains.anko.longToast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,12 +35,12 @@ class FindRoom : AppCompatActivity() {
                 }
 
                 setRecyclerView(rooms)
-                find_room_loading.visibility = View.INVISIBLE
+                find_room_loading.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<List<Summary>?>?,
                                    t: Throwable) {
-                Log.e("onFailure error", t.message.toString())
+                longToast(t.message.toString())
             }
         })
     }

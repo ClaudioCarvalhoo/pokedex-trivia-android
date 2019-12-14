@@ -16,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.content.Intent
+import org.jetbrains.anko.longToast
 import java.io.Serializable
 
 class RoomInfo : AppCompatActivity() {
@@ -43,7 +44,7 @@ class RoomInfo : AppCompatActivity() {
 
             override fun onFailure(call: Call<Room?>?,
                                    t: Throwable?) {
-                Log.e("onFailure error", t?.message ?: "Unknown error")
+                longToast(t?.message ?: "Unknown error")
             }
         })
     }
