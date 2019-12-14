@@ -12,13 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Questions"></activity>
+        <activity android:name=".activities.Questions"></activity>
         <activity
-            android:name=".Activities.RoomInfo"
+            android:name=".activities.RoomInfo"
             android:label="@string/title_activity_room_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.FindRoom"
+            android:name=".activities.FindRoom"
             android:label="@string/title_activity_find_room"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

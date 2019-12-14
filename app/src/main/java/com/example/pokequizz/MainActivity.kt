@@ -1,10 +1,10 @@
 package com.example.pokequizz
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.pokequizz.activities.FindRoom
 import kotlinx.android.synthetic.main.activity_main.*
-import com.example.pokequizz.Activities.FindRoom
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.pokequizz.ApiHelper.Entities
+package com.example.pokequizz.apiHelper.entities
 
 class CreateRoomRequest(numberOfQuestions: Int, categories: List<Category>) {
 

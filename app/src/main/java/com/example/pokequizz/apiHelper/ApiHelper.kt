@@ -1,6 +1,11 @@
-package com.example.pokequizz.ApiHelper
+package com.example.pokequizz.apiHelper
 
-import com.example.pokequizz.ApiHelper.Entities.*
+import com.example.pokequizz.apiHelper.entities.Answer
+import com.example.pokequizz.apiHelper.entities.Category
+import com.example.pokequizz.apiHelper.entities.CreateRoomRequest
+import com.example.pokequizz.apiHelper.entities.Entry
+import com.example.pokequizz.apiHelper.entities.Room
+import com.example.pokequizz.apiHelper.entities.Summary
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

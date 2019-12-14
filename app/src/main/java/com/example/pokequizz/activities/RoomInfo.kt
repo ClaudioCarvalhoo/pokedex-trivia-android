@@ -1,27 +1,26 @@
-package com.example.pokequizz.Activities
+package com.example.pokequizz.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import com.example.pokequizz.adapters.RoomInfoAdapter
+import com.example.pokequizz.apiHelper.entities.Room
+import com.example.pokequizz.apiHelper.RetrofitFacade
+import com.example.pokequizz.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
-import com.example.pokequizz.Adapters.RoomInfoAdapter
-import com.example.pokequizz.ApiHelper.Entities.Room
-import com.example.pokequizz.R
-import com.example.pokequizz.ApiHelper.RetrofitFacade
+import java.io.Serializable
 import kotlinx.android.synthetic.main.activity_room_info.*
+import org.jetbrains.anko.longToast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.content.Intent
-import org.jetbrains.anko.longToast
-import java.io.Serializable
 
 class RoomInfo : AppCompatActivity() {
 
-    private var room : Room? = null
+    private var room: Room? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +30,11 @@ class RoomInfo : AppCompatActivity() {
         var roomId = b?.getString("room_id").toString()
 
         val call = RetrofitFacade.retrofit.getRoom(roomId)
-        call.enqueue(object: Callback<Room?> {
-            override fun onResponse(call: Call<Room?>?,
-                                    response: Response<Room?>?) {
+        call.enqueue(object : Callback<Room?> {
+            override fun onResponse(
+                call: Call<Room?>?,
+                response: Response<Room?>?
+            ) {
                 response?.body()?.let {
                     room = it
                 }
@@ -42,8 +43,10 @@ class RoomInfo : AppCompatActivity() {
                 setRoomInfoView(room)
             }
 
-            override fun onFailure(call: Call<Room?>?,
-                                   t: Throwable?) {
+            override fun onFailure(
+                call: Call<Room?>?,
+                t: Throwable?
+            ) {
                 longToast(t?.message ?: "Unknown error")
             }
         })

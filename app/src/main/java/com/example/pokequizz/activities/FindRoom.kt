@@ -1,16 +1,15 @@
-package com.example.pokequizz.Activities
+package com.example.pokequizz.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.pokequizz.Adapters.FindRoomAdapter
+import com.example.pokequizz.adapters.FindRoomAdapter
+import com.example.pokequizz.apiHelper.entities.Summary
+import com.example.pokequizz.apiHelper.RetrofitFacade
 import com.example.pokequizz.R
-import com.example.pokequizz.ApiHelper.Entities.Summary
-import com.example.pokequizz.ApiHelper.RetrofitFacade
 import kotlinx.android.synthetic.main.activity_find_room.*
 import org.jetbrains.anko.longToast
 import retrofit2.Call
@@ -19,7 +18,7 @@ import retrofit2.Response
 
 class FindRoom : AppCompatActivity() {
 
-    private var rooms : List<Summary> = listOf()
+    private var rooms: List<Summary> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +26,11 @@ class FindRoom : AppCompatActivity() {
         setSupportActionBar(find_room_toolbar)
 
         val call = RetrofitFacade.retrofit.getRooms()
-        call.enqueue(object: Callback<List<Summary>?> {
-            override fun onResponse(call: Call<List<Summary>?>?,
-                                    response: Response<List<Summary>?>?) {
+        call.enqueue(object : Callback<List<Summary>?> {
+            override fun onResponse(
+                call: Call<List<Summary>?>?,
+                response: Response<List<Summary>?>?
+            ) {
                 response?.body()?.let {
                     rooms = it
                 }
@@ -38,8 +39,10 @@ class FindRoom : AppCompatActivity() {
                 find_room_loading.visibility = View.GONE
             }
 
-            override fun onFailure(call: Call<List<Summary>?>?,
-                                   t: Throwable) {
+            override fun onFailure(
+                call: Call<List<Summary>?>?,
+                t: Throwable
+            ) {
                 longToast(t.message.toString())
             }
         })

@@ -6,7 +6,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.RoomInfo.GeneralFragment">
+    tools:context=".fragments.roomInfo.GeneralFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/room_info_card_view"

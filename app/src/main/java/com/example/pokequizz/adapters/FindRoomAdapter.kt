@@ -1,19 +1,20 @@
-package com.example.pokequizz.Adapters
+package com.example.pokequizz.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokequizz.ApiHelper.Entities.Summary
+import com.example.pokequizz.apiHelper.entities.Summary
 import com.example.pokequizz.R
 import kotlinx.android.synthetic.main.find_room_item.view.*
 
 class FindRoomAdapter(
     private val rooms: List<Summary>,
     private val context: Context,
-    private val onItemClickListener: View.OnClickListener)
-    : RecyclerView.Adapter<FindRoomAdapter.ViewHolder>() {
+    private val onItemClickListener: View.OnClickListener
+) :
+    RecyclerView.Adapter<FindRoomAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val room = rooms[position]

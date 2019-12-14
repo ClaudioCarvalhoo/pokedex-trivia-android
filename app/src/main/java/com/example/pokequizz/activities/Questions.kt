@@ -1,11 +1,10 @@
-package com.example.pokequizz.Activities
+package com.example.pokequizz.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.example.pokequizz.Adapters.QuestionsAdapter
-import com.example.pokequizz.ApiHelper.Entities.Question
+import com.example.pokequizz.adapters.QuestionsAdapter
+import com.example.pokequizz.apiHelper.entities.Question
 import com.example.pokequizz.R
 import kotlinx.android.synthetic.main.questions_activity.*
 
@@ -37,7 +36,7 @@ class Questions : AppCompatActivity() {
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                step_view.go(position, false);
+                step_view.go(position, false)
             }
 
             override fun onPageSelected(position: Int) {}

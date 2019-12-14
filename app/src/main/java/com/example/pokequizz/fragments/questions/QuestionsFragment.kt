@@ -1,16 +1,15 @@
-package com.example.pokequizz.Fragments.Questions
+package com.example.pokequizz.fragments.questions
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.pokequizz.ApiHelper.Entities.Question
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.example.pokequizz.apiHelper.entities.Question
 import com.example.pokequizz.R
-import com.example.pokequizz.ViewModels.QuestionsViewModel
+import com.example.pokequizz.viewModels.QuestionsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.questions_fragment.*
 
@@ -19,7 +18,8 @@ class QuestionsFragment : Fragment() {
     private lateinit var questionsViewModel: QuestionsViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val root = inflater.inflate(R.layout.questions_fragment, container, false)
@@ -29,7 +29,7 @@ class QuestionsFragment : Fragment() {
         })
         questionsViewModel.imageUrl.observe(this, Observer<String> {
             if (!it.isEmpty()) {
-                Picasso.get().load(it).into(imageView);
+                Picasso.get().load(it).into(imageView)
             } else {
                 imageView.visibility = View.GONE
             }
@@ -56,7 +56,7 @@ class QuestionsFragment : Fragment() {
         private const val ARG_IMAGE_URL = "image_url"
 
         @JvmStatic
-        fun newInstance(question: Question) : QuestionsFragment {
+        fun newInstance(question: Question): QuestionsFragment {
             return QuestionsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_STEM, question?.stem)

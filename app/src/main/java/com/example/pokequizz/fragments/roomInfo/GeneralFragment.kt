@@ -1,4 +1,4 @@
-package com.example.pokequizz.Fragments.RoomInfo
+package com.example.pokequizz.fragments.roomInfo
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.pokequizz.ApiHelper.Entities.Room
+import com.example.pokequizz.apiHelper.entities.Room
 import com.example.pokequizz.R
-import com.example.pokequizz.ViewModels.RoomInfoViewModel
+import com.example.pokequizz.viewModels.RoomInfoViewModel
 import kotlinx.android.synthetic.main.fragment_room_info_general.*
 
 /**
@@ -28,7 +28,8 @@ class GeneralFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_room_info_general, container, false)

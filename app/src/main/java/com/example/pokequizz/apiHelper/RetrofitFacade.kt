@@ -1,4 +1,4 @@
-package com.example.pokequizz.ApiHelper
+package com.example.pokequizz.apiHelper
 
 class RetrofitFacade {
     companion object {

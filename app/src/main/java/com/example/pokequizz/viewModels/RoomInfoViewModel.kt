@@ -1,4 +1,4 @@
-package com.example.pokequizz.ViewModels
+package com.example.pokequizz.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

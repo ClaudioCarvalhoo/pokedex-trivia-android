@@ -1,11 +1,11 @@
-package com.example.pokequizz.Adapters
+package com.example.pokequizz.adapters
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.pokequizz.ApiHelper.Entities.Room
-import com.example.pokequizz.Fragments.RoomInfo.GeneralFragment
+import com.example.pokequizz.apiHelper.entities.Room
+import com.example.pokequizz.fragments.roomInfo.GeneralFragment
 import com.example.pokequizz.R
 
 private val TAB_TITLES = arrayOf(
@@ -26,7 +26,7 @@ class RoomInfoAdapter(private val context: Context, fm: FragmentManager, room: R
     override fun getItem(position: Int): Fragment {
         var instance = GeneralFragment
 
-        when(position) {
+        when (position) {
             0 -> instance = GeneralFragment
         }
 

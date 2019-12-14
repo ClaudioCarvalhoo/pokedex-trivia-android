@@ -1,8 +1,8 @@
-package com.example.pokequizz.ApiHelper.Entities
+package com.example.pokequizz.apiHelper.entities
 
 import java.io.Serializable
 
-class Alternative(id: String, text: String, imageUrl: String) : Serializable{
+class Alternative(id: String, text: String, imageUrl: String) : Serializable {
     var id: String
     var text: String
     var imageUrl: String

@@ -1,4 +1,4 @@
-package com.example.pokequizz.ApiHelper.Entities
+package com.example.pokequizz.apiHelper.entities
 
 class Summary(id: String, categories: Array<Category>) {
     var id: String

@@ -1,4 +1,4 @@
-package com.example.pokequizz.ApiHelper.Entities
+package com.example.pokequizz.apiHelper.entities
 
 class Entry(name: String, score: Int) {
     var name: String

@@ -1,4 +1,4 @@
-package com.example.pokequizz.ApiHelper.Entities
+package com.example.pokequizz.apiHelper.entities
 
 class Room(id: String, questions: List<Question>, categories: List<String>, leaderboard: Array<Entry>) {
     var id: String

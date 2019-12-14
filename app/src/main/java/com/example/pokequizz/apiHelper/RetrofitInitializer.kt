@@ -1,4 +1,4 @@
-package com.example.pokequizz.ApiHelper
+package com.example.pokequizz.apiHelper
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
