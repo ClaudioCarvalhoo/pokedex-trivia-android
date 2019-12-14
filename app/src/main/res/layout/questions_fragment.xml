@@ -7,14 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.Questions.QuestionsFragment">
 
-    <TextView
-        android:id="@+id/question_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="QuestionsFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:textAlignment="gravity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/question_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxWidth="250dp"
+            android:padding="8dp"
+            android:text="@string/stem_ph"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/stem_image"
+            tools:src="@tools:sample/avatars[0]" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
