@@ -87,8 +87,6 @@ class RoomInfo : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this, FindRoom::class.java)
-        val bundle = Bundle()
-        intent.putExtras(bundle)
         startActivity(intent)
 
         return true

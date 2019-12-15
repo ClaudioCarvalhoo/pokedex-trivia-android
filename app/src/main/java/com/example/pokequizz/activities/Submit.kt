@@ -12,8 +12,11 @@ import com.example.pokequizz.apiHelper.RetrofitFacade
 import com.example.pokequizz.apiHelper.entities.Answer
 import com.example.pokequizz.apiHelper.entities.SubmitRequest
 import kotlinx.android.synthetic.main.activity_submit.confirm_submit_bttn
+import kotlinx.android.synthetic.main.activity_submit.find_another_room_bttn
 import kotlinx.android.synthetic.main.activity_submit.submit_content
 import kotlinx.android.synthetic.main.activity_submit.submit_loading
+import kotlinx.android.synthetic.main.activity_submit.submitted_text
+import kotlinx.android.synthetic.main.questions_activity.submit_bttn
 import okhttp3.ResponseBody
 import org.jetbrains.anko.longToast
 import retrofit2.Call
@@ -60,7 +63,6 @@ class Submit : AppCompatActivity() {
 
     private fun setButtonListener(answers: List<Answer>) {
         confirm_submit_bttn.setOnClickListener {
-            submit_content.visibility = View.INVISIBLE
             submit_loading.visibility = View.VISIBLE
 
             username = name_text.text.toString()
@@ -74,6 +76,7 @@ class Submit : AppCompatActivity() {
                 ) {
                     response?.body()?.let {
                         submit_loading.visibility = View.INVISIBLE
+                        setEmptyStateView()
                         goToRoomInfoActivity()
                     }
                 }
@@ -97,5 +100,16 @@ class Submit : AppCompatActivity() {
         bundle.putString("message", "Nice, ${username}! Check the leaderboard to see your score!")
         intent.putExtras(bundle)
         startActivity(intent)
+    }
+
+    private fun setEmptyStateView() {
+        submitted_text.visibility = View.VISIBLE
+        find_another_room_bttn.visibility = View.VISIBLE
+        confirm_submit_bttn?.visibility = View.GONE
+
+        find_another_room_bttn.setOnClickListener {
+            val intent = Intent(this, FindRoom::class.java)
+            startActivity(intent)
+        }
     }
 }

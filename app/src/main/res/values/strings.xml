@@ -16,6 +16,8 @@
     <string name="find_room_id_ph">Room #22</string>
     <string name="find_room_categories_ph">POKEMON-NAMES, ITEM-NAMES, POKEMON-TYPES, POKEMON-ABILITIES, ITEM-EFFECTS</string>
     <string name="submit_bttn">Submit</string>
+    <string name="submitted">Your answer was submitted!</string>
+    <string name="find_another_room">Find another room</string>
     <string name="stem_ph">What item has the following effect?\nIncreases Special Defense effort by 1.</string>
     <string name="stem_image">Stem Image</string>
     <string name="alternative_ph">Charmander</string>
