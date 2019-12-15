@@ -8,9 +8,14 @@ import com.example.pokequizz.apiHelper.entities.Alternative
 
 class QuestionsViewModel : ViewModel() {
 
+    private val _id = MutableLiveData<String>()
     private val _stem = MutableLiveData<String>()
     private val _imageUrl = MutableLiveData<String>()
     private val _alternatives = MutableLiveData<List<Alternative>>()
+
+    var id: LiveData<String> = Transformations.map(_id) {
+        it
+    }
 
     val stem: LiveData<String> = Transformations.map(_stem) {
         it
@@ -22,6 +27,10 @@ class QuestionsViewModel : ViewModel() {
 
     val alternatives: LiveData<List<Alternative>> = Transformations.map(_alternatives) {
         it
+    }
+
+    fun setId(id: String) {
+        _id.value = id
     }
 
     fun setStem(stem: String) {

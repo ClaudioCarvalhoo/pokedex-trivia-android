@@ -32,6 +32,10 @@ class QuestionsFragment : Fragment() {
     ): View {
         root = inflater.inflate(R.layout.questions_fragment, container, false)
 
+        questionsViewModel.id.observe(this, Observer<String> {
+            root!!.alternatives_radio_group.tag = it
+        })
+
         questionsViewModel.stem.observe(this, Observer<String> {
             question_title.text = it
         })
@@ -45,14 +49,19 @@ class QuestionsFragment : Fragment() {
         })
 
         questionsViewModel.alternatives.observe(this, Observer<List<Alternative>> {
-            for (alternative in it) {
+            for ((i, alternative) in it.withIndex()) {
                 val radioButton = RadioButton(getActivity())
                 radioButton?.layoutParams= LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT)
                 radioButton?.setText(alternative.text)
+                radioButton.id = i
 
                 root!!.alternatives_radio_group!!.addView(radioButton)
+            }
+
+            root!!.alternatives_radio_group.setOnCheckedChangeListener { group, checkedId ->
+                onClickListener(group.tag.toString(), checkedId)
             }
         })
 
@@ -65,6 +74,7 @@ class QuestionsFragment : Fragment() {
 
         if (savedInstanceState == null) {
             questionsViewModel = ViewModelProviders.of(this).get(QuestionsViewModel::class.java).apply {
+                setId(arguments?.getString(ARG_ID) ?: "")
                 setStem(arguments?.getString(ARG_STEM) ?: "")
                 setImageUrl(arguments?.getString(ARG_IMAGE_URL) ?: "")
                 setAlternatives(arguments?.getSerializable(ARG_ALTERNATIVES) as List<Alternative>)
@@ -84,20 +94,24 @@ class QuestionsFragment : Fragment() {
     }
 
     companion object {
+        private const val ARG_ID = "id"
         private const val ARG_STEM = "stem"
         private const val ARG_IMAGE_URL = "image_url"
         private const val ARG_ALTERNATIVES = "alternatives"
-        private var question : Question? = null
+        private lateinit var question : Question
+        private lateinit var onClickListener : (String, Int) -> Unit
 
         @JvmStatic
-        fun newInstance(question: Question): QuestionsFragment {
+        fun newInstance(question: Question, onClickListener: (String, Int) -> Unit): QuestionsFragment {
             this.question = question
+            this.onClickListener = onClickListener
 
             return QuestionsFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_STEM, question?.stem)
-                    putString(ARG_IMAGE_URL, question?.imageUrl)
-                    putSerializable(ARG_ALTERNATIVES, question!!.alternatives as Serializable)
+                    putString(ARG_ID, question.id)
+                    putString(ARG_STEM, question.stem)
+                    putString(ARG_IMAGE_URL, question.imageUrl)
+                    putSerializable(ARG_ALTERNATIVES, question.alternatives as Serializable)
                 }
             }
         }

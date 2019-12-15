@@ -7,9 +7,13 @@ import androidx.viewpager.widget.ViewPager
 import com.example.pokequizz.adapters.QuestionsAdapter
 import com.example.pokequizz.apiHelper.entities.Question
 import com.example.pokequizz.R
+import com.example.pokequizz.apiHelper.entities.Answer
 import kotlinx.android.synthetic.main.questions_activity.*
 
 class Questions : AppCompatActivity() {
+
+    private val answers : ArrayList<Answer> = arrayListOf()
+    private lateinit var questions : List<Question>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +21,7 @@ class Questions : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             val bundle = intent.extras
-            val questions = bundle?.getSerializable("questions") as List<Question>
+            questions = bundle?.getSerializable("questions") as List<Question>
 
             setViewPager(questions)
         }
@@ -28,7 +32,7 @@ class Questions : AppCompatActivity() {
         step_view.setSteps(questionsMap)
 
         val questionsAdapter =
-            QuestionsAdapter(this, supportFragmentManager, questions)
+            QuestionsAdapter(this, supportFragmentManager, questions, this::onAlternativeSelection)
 
         view_pager_questions.adapter = questionsAdapter
 
@@ -44,5 +48,17 @@ class Questions : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {}
         })
+    }
+
+    private fun onAlternativeSelection(questionId: String, alternativeIndex: Int) {
+        var question = questions.find { it.id == questionId }
+        var alternative = question!!.alternatives!![alternativeIndex]
+        var answer = answers.find { it.questionId == question.id }
+
+        if (answer == null) {
+            answers.add(Answer(questionId, alternative.id))
+        } else {
+            answer.choice = alternative.id
+        }
     }
 }
