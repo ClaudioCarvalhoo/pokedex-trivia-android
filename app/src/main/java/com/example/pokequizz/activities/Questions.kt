@@ -60,5 +60,9 @@ class Questions : AppCompatActivity() {
         } else {
             answer.choice = alternative.id
         }
+
+        if (answers.size == questions.size) {
+            submit_bttn.isEnabled = true
+        }
     }
 }

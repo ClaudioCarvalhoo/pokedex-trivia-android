@@ -33,23 +33,21 @@
         android:id="@+id/view_pager_questions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+    </androidx.viewpager.widget.ViewPager>
 
     <Button
-        android:id="@+id/next_question"
+        android:id="@+id/submit_bttn"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
-        android:enabled="true"
-        android:text="@string/next_question"
-        android:textColor="@color/colorPrimary"
-        android:textColorHighlight="@android:color/white"
-        android:textColorHint="@android:color/white"
-        android:textColorLink="@android:color/white"
-        android:textCursorDrawable="@android:color/white"
+        android:enabled="false"
+        android:text="@string/submit_bttn"
+        android:textColor="@color/text_color"
         android:textSize="20dp" />
 
 </FrameLayout>
