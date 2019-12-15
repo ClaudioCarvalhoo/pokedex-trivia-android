@@ -4,11 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.example.pokequizz.apiHelper.entities.Alternative
 
 class QuestionsViewModel : ViewModel() {
 
     private val _stem = MutableLiveData<String>()
     private val _imageUrl = MutableLiveData<String>()
+    private val _alternatives = MutableLiveData<List<Alternative>>()
 
     val stem: LiveData<String> = Transformations.map(_stem) {
         it
@@ -18,11 +20,19 @@ class QuestionsViewModel : ViewModel() {
         it
     }
 
+    val alternatives: LiveData<List<Alternative>> = Transformations.map(_alternatives) {
+        it
+    }
+
     fun setStem(stem: String) {
         _stem.value = stem
     }
 
     fun setImageUrl(imageUrl: String) {
         _imageUrl.value = imageUrl
+    }
+
+    fun setAlternatives(alternatives: List<Alternative>) {
+        _alternatives.value = alternatives
     }
 }

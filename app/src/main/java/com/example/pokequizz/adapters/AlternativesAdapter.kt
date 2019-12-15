@@ -29,12 +29,9 @@ class AlternativesAdapter(private val context: Context,
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val rowView = inflater.inflate(R.layout.alternative_item, parent, false)
-
         val alternative = alternatives[position]
 
-        Log.e("Alternative", alternative.text)
-
+        val rowView = inflater.inflate(R.layout.alternative_item, parent, false)
         rowView.alternative_title.text = alternative.text
 
         return rowView
