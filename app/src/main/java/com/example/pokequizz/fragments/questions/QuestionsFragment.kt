@@ -100,12 +100,10 @@ class QuestionsFragment : Fragment() {
         private const val ARG_IMAGE_URL = "image_url"
         private const val ARG_ALTERNATIVES = "alternatives"
         private lateinit var question : Question
-        private var onClickListener : ((String, Int) -> Unit)? = null
 
         @JvmStatic
-        fun newInstance(question: Question, onClickListener: (String, Int) -> Unit): QuestionsFragment {
+        fun newInstance(question: Question): QuestionsFragment {
             this.question = question
-//            this.onClickListener = onClickListener
 
             return QuestionsFragment().apply {
                 arguments = Bundle().apply {

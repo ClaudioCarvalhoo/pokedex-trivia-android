@@ -34,7 +34,7 @@ class Questions : AppCompatActivity() {
         step_view.setSteps(questionsMap)
 
         val questionsAdapter =
-            QuestionsAdapter(this, supportFragmentManager, questions, this::onAlternativeSelection)
+            QuestionsAdapter(this, supportFragmentManager, questions)
 
         view_pager_questions.adapter = questionsAdapter
 
@@ -93,6 +93,4 @@ class Questions : AppCompatActivity() {
             }
         }
     }
-
-    fun onAlternativeSelection(questionId: String, alternativeIndex: Int) {}
 }

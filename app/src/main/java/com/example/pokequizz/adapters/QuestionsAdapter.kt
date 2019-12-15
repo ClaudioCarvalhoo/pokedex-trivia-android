@@ -11,16 +11,14 @@ import com.example.pokequizz.fragments.questions.QuestionsFragment
 class QuestionsAdapter(
     private val context: Context,
     fm: FragmentManager,
-    questions: List<Question>,
-    onClickListener: (String, Int) -> Unit
+    questions: List<Question>
     ) : FragmentPagerAdapter(fm) {
 
     private val questions = questions
-    private val onClickListener = onClickListener
 
     override fun getItem(position: Int): Fragment {
         val question = questions[position]
-        return QuestionsFragment.newInstance(question, onClickListener)
+        return QuestionsFragment.newInstance(question)
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
