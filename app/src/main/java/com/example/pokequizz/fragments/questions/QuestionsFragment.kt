@@ -1,7 +1,6 @@
 package com.example.pokequizz.fragments.questions
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +60,7 @@ class QuestionsFragment : Fragment() {
             }
 
             root!!.alternatives_radio_group.setOnCheckedChangeListener { group, checkedId ->
-                onClickListener(group.tag.toString(), checkedId)
+                onClickListener?.invoke(group.tag.toString(), checkedId)
             }
         })
 
@@ -86,6 +85,7 @@ class QuestionsFragment : Fragment() {
         super.onDestroyView()
 
         root = null
+        onClickListener = null
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -99,7 +99,7 @@ class QuestionsFragment : Fragment() {
         private const val ARG_IMAGE_URL = "image_url"
         private const val ARG_ALTERNATIVES = "alternatives"
         private lateinit var question : Question
-        private lateinit var onClickListener : (String, Int) -> Unit
+        private var onClickListener : ((String, Int) -> Unit)? = null
 
         @JvmStatic
         fun newInstance(question: Question, onClickListener: (String, Int) -> Unit): QuestionsFragment {
