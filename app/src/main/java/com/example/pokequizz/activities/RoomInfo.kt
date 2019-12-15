@@ -27,7 +27,12 @@ class RoomInfo : AppCompatActivity() {
         setContentView(R.layout.activity_room_info)
 
         val b = intent.extras
-        var roomId = b?.getString("room_id").toString()
+        var roomId = b?.getString("roomId").toString()
+        var message = b?.getString("message")
+
+        if (message != null) {
+            longToast(message.toString())
+        }
 
         val call = RetrofitFacade.retrofit.getRoom(roomId)
         call.enqueue(object : Callback<Room?> {
@@ -67,10 +72,11 @@ class RoomInfo : AppCompatActivity() {
     }
 
     private fun changeActivity() {
-        val intent = Intent(this, Questions::class.java)
-        val bundle = Bundle()
-        bundle.putSerializable("questions", room?.questions as Serializable)
-        intent.putExtras(bundle)
-        startActivity(intent)
+            val intent = Intent(this, Questions::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable("questions", room?.questions as Serializable)
+            bundle.putString("roomId", room?.id)
+            intent.putExtras(bundle)
+            startActivity(intent)
     }
 }

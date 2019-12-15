@@ -63,7 +63,7 @@ class FindRoom : AppCompatActivity() {
 
         val intent = Intent(this, RoomInfo::class.java)
         val b = Bundle()
-        b.putString("room_id", room.id)
+        b.putString("roomId", room.id)
         intent.putExtras(b)
         startActivity(intent)
     }

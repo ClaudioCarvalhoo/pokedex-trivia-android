@@ -1,5 +1,6 @@
 package com.example.pokequizz.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -9,11 +10,13 @@ import com.example.pokequizz.apiHelper.entities.Question
 import com.example.pokequizz.R
 import com.example.pokequizz.apiHelper.entities.Answer
 import kotlinx.android.synthetic.main.questions_activity.*
+import java.io.Serializable
 
 class Questions : AppCompatActivity() {
 
     private val answers : ArrayList<Answer> = arrayListOf()
     private lateinit var questions : List<Question>
+    private lateinit var roomId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +25,10 @@ class Questions : AppCompatActivity() {
         if (savedInstanceState == null) {
             val bundle = intent.extras
             questions = bundle?.getSerializable("questions") as List<Question>
+            roomId = bundle?.getString("roomId").toString()
 
             setViewPager(questions)
+            setSubmitButton()
         }
     }
 
@@ -48,6 +53,17 @@ class Questions : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {}
         })
+    }
+
+    private fun setSubmitButton() {
+        submit_bttn.setOnClickListener {
+            val intent = Intent(this, Submit::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable("answers", answers as Serializable)
+            bundle.putString("roomId", roomId)
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
     }
 
     private fun onAlternativeSelection(questionId: String, alternativeIndex: Int) {

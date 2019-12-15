@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Questions"></activity>
+        <activity android:name=".activities.Submit"></activity>
+        <activity android:name=".activities.Questions" />
         <activity
             android:name=".activities.RoomInfo"
             android:label="@string/title_activity_room_info"
