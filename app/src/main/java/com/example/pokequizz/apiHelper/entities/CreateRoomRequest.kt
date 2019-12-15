@@ -1,9 +1,9 @@
 package com.example.pokequizz.apiHelper.entities
 
-class CreateRoomRequest(numberOfQuestions: Int, categories: List<Category>) {
+class CreateRoomRequest(numberOfQuestions: Int, categories: List<String>) {
 
     var numberOfQuestions: Int
-    var categories: List<Category>
+    var categories: List<String>
 
     init {
         this.numberOfQuestions = numberOfQuestions

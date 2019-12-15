@@ -3,6 +3,7 @@ package com.example.pokequizz.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -24,6 +25,7 @@ class FindRoom : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_room)
         setSupportActionBar(find_room_toolbar)
+        setFab()
 
         val call = RetrofitFacade.retrofit.getRooms()
         call.enqueue(object : Callback<List<Summary>?> {
@@ -57,6 +59,10 @@ class FindRoom : AppCompatActivity() {
         find_room_rv.layoutManager = layoutManager
     }
 
+    private fun setFab() {
+        add_room_fab.setOnClickListener { toCreateActivity() }
+    }
+
     private val onItemClickListener = View.OnClickListener { view ->
         val viewHolder = view.tag as RecyclerView.ViewHolder
         val room = this.rooms[viewHolder.adapterPosition]
@@ -65,6 +71,11 @@ class FindRoom : AppCompatActivity() {
         val b = Bundle()
         b.putString("roomId", room.id)
         intent.putExtras(b)
+        startActivity(intent)
+    }
+
+    private fun toCreateActivity() {
+        val intent = Intent(this, CreateRoom::class.java)
         startActivity(intent)
     }
 }

@@ -6,6 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="title_activity_room_info">Room information</string>
+    <string name="title_activity_create_room">Create a room</string>
+    <string name="title_activity_submit_answer">Submit your answer</string>
     <string name="tab_text_1">GENERAL</string>
     <string name="tab_text_2">CATEGORIES</string>
     <string name="tab_text_3">LEADERBOARD</string>
@@ -24,4 +26,8 @@
     <string name="name_ph">Enter your name...</string>
     <string name="username_ph">Tatinho</string>
     <string name="score_ph">10</string>
+    <string name="qtd_question_input_title">Amount of questions</string>
+    <string name="categories_input_title">Categories</string>
+    <string name="create_bttn">Create</string>
+    <string name="create_room_name">Create a room</string>
 </resources>
