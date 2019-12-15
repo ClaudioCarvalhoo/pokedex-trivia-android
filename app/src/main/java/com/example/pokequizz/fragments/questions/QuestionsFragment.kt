@@ -13,6 +13,7 @@ import com.example.pokequizz.apiHelper.entities.Question
 import com.example.pokequizz.R
 import com.example.pokequizz.activities.Questions
 import com.example.pokequizz.apiHelper.entities.Alternative
+import com.example.pokequizz.apiHelper.entities.Answer
 import com.example.pokequizz.viewModels.QuestionsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.questions_fragment.imageView
@@ -48,14 +49,21 @@ class QuestionsFragment : Fragment() {
             }
         })
 
-        questionsViewModel.alternatives.observe(this, Observer<List<Alternative>> {
-            for ((i, alternative) in it.withIndex()) {
+        questionsViewModel.pair.observe(this, Observer<Pair<List<Alternative>, ArrayList<Answer>>> {
+            val alternatives = it.first
+            val answers = it.second
+
+            for ((i, alternative) in alternatives.withIndex()) {
                 val radioButton = RadioButton(getActivity())
                 radioButton?.layoutParams= LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT)
                 radioButton?.setText(alternative.text)
                 radioButton.id = i
+
+                if (answers.find { it.choice == alternative.id } != null) {
+                    radioButton.isChecked = true
+                }
 
                 root!!.alternatives_radio_group!!.addView(radioButton)
             }
@@ -64,6 +72,7 @@ class QuestionsFragment : Fragment() {
                 Questions.onAlternativeSelection(group.tag.toString(), checkedId)
             }
         })
+
 
         return root!!
     }
@@ -77,7 +86,10 @@ class QuestionsFragment : Fragment() {
                 setId(arguments?.getString(ARG_ID) ?: "")
                 setStem(arguments?.getString(ARG_STEM) ?: "")
                 setImageUrl(arguments?.getString(ARG_IMAGE_URL) ?: "")
-                setAlternatives(arguments?.getSerializable(ARG_ALTERNATIVES) as List<Alternative>)
+                setPair(
+                    arguments?.getSerializable(ARG_ALTERNATIVES) as List<Alternative>,
+                    arguments?.getSerializable(ARG_ANSWERS) as ArrayList<Answer>
+                )
             }
         }
     }
@@ -99,10 +111,11 @@ class QuestionsFragment : Fragment() {
         private const val ARG_STEM = "stem"
         private const val ARG_IMAGE_URL = "image_url"
         private const val ARG_ALTERNATIVES = "alternatives"
+        private const val ARG_ANSWERS = "answers"
         private lateinit var question : Question
 
         @JvmStatic
-        fun newInstance(question: Question): QuestionsFragment {
+        fun newInstance(question: Question, answers: ArrayList<Answer>): QuestionsFragment {
             this.question = question
 
             return QuestionsFragment().apply {
@@ -111,6 +124,7 @@ class QuestionsFragment : Fragment() {
                     putString(ARG_STEM, question.stem)
                     putString(ARG_IMAGE_URL, question.imageUrl)
                     putSerializable(ARG_ALTERNATIVES, question.alternatives as Serializable)
+                    putSerializable(ARG_ANSWERS, answers as Serializable)
                 }
             }
         }

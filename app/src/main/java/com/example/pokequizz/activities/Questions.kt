@@ -34,7 +34,7 @@ class Questions : AppCompatActivity() {
         step_view.setSteps(questionsMap)
 
         val questionsAdapter =
-            QuestionsAdapter(this, supportFragmentManager, questions)
+            QuestionsAdapter(this, supportFragmentManager, questions, answers)
 
         view_pager_questions.adapter = questionsAdapter
 
@@ -58,9 +58,11 @@ class Questions : AppCompatActivity() {
         submit_bttn.setOnClickListener {
             val intent = Intent(this, Submit::class.java)
             val bundle = Bundle()
-            bundle.putSerializable("answers", answers as Serializable)
+            bundle.putSerializable("answers", answers.toMutableList() as Serializable)
             bundle.putString("roomId", roomId)
             intent.putExtras(bundle)
+
+            answers = arrayListOf()
             startActivity(intent)
         }
     }
@@ -72,7 +74,7 @@ class Questions : AppCompatActivity() {
     }
 
     companion object {
-        private val answers : ArrayList<Answer> = arrayListOf()
+        private var answers : ArrayList<Answer> = arrayListOf()
         private lateinit var questions : List<Question>
         private lateinit var roomId : String
         private var submitBttn : View? = null
