@@ -1,6 +1,5 @@
 package com.example.pokequizz.fragments.roomInfo
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,9 +11,6 @@ import com.example.pokequizz.R
 import com.example.pokequizz.adapters.LeaderboardAdapter
 import com.example.pokequizz.apiHelper.entities.Entry
 import com.example.pokequizz.apiHelper.entities.Room
-
-import com.example.pokequizz.fragments.roomInfo.dummy.DummyContent
-import com.example.pokequizz.fragments.roomInfo.dummy.DummyContent.DummyItem
 import java.io.Serializable
 
 class LeaderboardFragment : Fragment() {

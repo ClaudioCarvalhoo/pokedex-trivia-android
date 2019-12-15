@@ -2,8 +2,10 @@ package com.example.pokequizz.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.example.pokequizz.adapters.RoomInfoAdapter
 import com.example.pokequizz.apiHelper.entities.Room
@@ -25,6 +27,8 @@ class RoomInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room_info)
+
+        setSupportActionBar(room_info_toolbar as Toolbar)
 
         val b = intent.extras
         var roomId = b?.getString("roomId").toString()
@@ -69,6 +73,11 @@ class RoomInfo : AppCompatActivity() {
         fab.setOnClickListener {
             changeActivity()
         }
+
+        if (supportActionBar != null) {
+            Log.e("EAE", "EAE")
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     private fun changeActivity() {
@@ -78,5 +87,14 @@ class RoomInfo : AppCompatActivity() {
         bundle.putString("roomId", room?.id)
         intent.putExtras(bundle)
         startActivity(intent)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent(this, FindRoom::class.java)
+        val bundle = Bundle()
+        intent.putExtras(bundle)
+        startActivity(intent)
+
+        return true
     }
 }

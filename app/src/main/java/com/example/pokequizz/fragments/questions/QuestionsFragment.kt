@@ -86,7 +86,6 @@ class QuestionsFragment : Fragment() {
 
         /* Removing risk of leaks */
         root = null
-        onClickListener = null
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

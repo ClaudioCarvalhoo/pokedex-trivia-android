@@ -11,7 +11,6 @@ import com.example.pokequizz.fragments.roomInfo.LeaderboardFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
-    R.string.tab_text_2,
     R.string.tab_text_3
 )
 
@@ -25,7 +24,7 @@ class RoomInfoAdapter(private val context: Context, fm: FragmentManager, room: R
     private val room = room
 
     override fun getItem(position: Int): Fragment {
-        if (position == 2) {
+        if (position == 1) {
             return LeaderboardFragment.newInstance(room)
         }
 
