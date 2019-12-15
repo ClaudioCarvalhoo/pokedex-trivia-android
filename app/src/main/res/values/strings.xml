@@ -20,4 +20,6 @@
     <string name="stem_image">Stem Image</string>
     <string name="alternative_ph">Charmander</string>
     <string name="name_ph">Enter your name...</string>
+    <string name="username_ph">Tatinho</string>
+    <string name="score_ph">10</string>
 </resources>

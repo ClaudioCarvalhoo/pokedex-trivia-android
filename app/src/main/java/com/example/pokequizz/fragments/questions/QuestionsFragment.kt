@@ -84,6 +84,7 @@ class QuestionsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
 
+        /* Removing risk of leaks */
         root = null
         onClickListener = null
     }
