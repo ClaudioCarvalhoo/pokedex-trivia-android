@@ -1,6 +1,7 @@
 package com.example.pokequizz.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.pokequizz.adapters.QuestionsAdapter
@@ -14,10 +15,12 @@ class Questions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.questions_activity)
 
-        val bundle = intent.extras
-        val questions = bundle?.getSerializable("questions") as List<Question>
+        if (savedInstanceState == null) {
+            val bundle = intent.extras
+            val questions = bundle?.getSerializable("questions") as List<Question>
 
-        setViewPager(questions)
+            setViewPager(questions)
+        }
     }
 
     private fun setViewPager(questions: List<Question>) {

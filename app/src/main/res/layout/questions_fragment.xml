@@ -38,14 +38,15 @@
             tools:src="@tools:sample/avatars[0]" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/alternatives_list_view"
+    <RadioGroup
+        android:id="@+id/alternatives_radio_group"
         android:layout_width="409dp"
         android:layout_height="538dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="191dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
