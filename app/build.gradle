@@ -3,6 +3,7 @@ plugins{
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'org.jmailen.kotlinter' version '2.2.0'
+    id 'com.frogermcs.androiddevmetrics'
 }
 
 android {
