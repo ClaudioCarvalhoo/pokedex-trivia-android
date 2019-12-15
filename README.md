@@ -37,7 +37,7 @@ Escolhemos estruturar nossos arquivos de acordo com as classes que eles implemen
 A tela de encontrar uma sala lista todas as salas criadas na API, dessa forma:
 
 <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-<img src="[https://i.imgur.com/upjgXFM.png](https://i.imgur.com/upjgXFM.png)" />
+  <img src="https://i.imgur.com/upjgXFM.png" />
 </div>
 
 No escopo do nosso projeto, com poucos usuários, essa lista não será muito grande. Porém, em um ambiente real para o público alvo, logo a quantidade de salas poderia subir bastante.
@@ -98,7 +98,7 @@ Queríamos ter certeza que cada ação que o usuário tomasse seria refletida na
 - Fluxo bem definido: uma vez que o jogador terminasse de jogar e estivesse na tela de informações da sala, a última _activity_ que ele esteve presente foi a de perguntas. Portanto, se ele voltasse com a _feature_ de voltar de _activity_ embutida no Android, ele ficaria preso em um _looping_. Por isso, implementamos o botão de navegação no _topbar_ em `activities.RoomInfo`, que **sempre** volta para a listagem de campanha. O fluxo se torna coerente e intuitivo para o usuário.
 
 <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-<img src="[https://i.imgur.com/gc4hPPL.png](https://i.imgur.com/gc4hPPL.png)" />
+  <img src="https://i.imgur.com/gc4hPPL.png" />
 </div>
 
 ## Issues/To do
