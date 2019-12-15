@@ -34,7 +34,7 @@ class FindRoom : AppCompatActivity() {
                 response: Response<List<Summary>?>?
             ) {
                 response?.body()?.let {
-                    rooms = it
+                    rooms = it.sortedBy { -it.id.toInt() }
                 }
 
                 setRecyclerView(rooms)
