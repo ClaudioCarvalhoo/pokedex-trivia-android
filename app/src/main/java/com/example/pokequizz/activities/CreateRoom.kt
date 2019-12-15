@@ -16,10 +16,13 @@ import kotlinx.android.synthetic.main.activity_create_room.create_room_checkboxe
 import kotlinx.android.synthetic.main.activity_create_room.create_room_content
 import kotlinx.android.synthetic.main.activity_create_room.create_room_loading
 import kotlinx.android.synthetic.main.activity_create_room.create_room_seek_bar
+import kotlinx.android.synthetic.main.activity_create_room.qtd_of_questions_input_value
 import org.jetbrains.anko.longToast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 
 class CreateRoom : AppCompatActivity() {
 
@@ -40,6 +43,7 @@ class CreateRoom : AppCompatActivity() {
                     subcategories = it.flatMap { it.subcategories }
                     setCheckboxes()
                     setCreateBttn()
+                    setSeekBar()
                     create_room_loading.visibility = View.GONE
                     create_room_content.visibility = View.VISIBLE
                 }
@@ -71,6 +75,11 @@ class CreateRoom : AppCompatActivity() {
                     selectedCategories.add(selectedCategory.id)
                 } else {
                     selectedCategories.remove(selectedCategory.id)
+                }
+
+                create_bttn.isEnabled = true
+                if(selectedCategories.isEmpty()) {
+                    create_bttn.isEnabled = false
                 }
             }
 
@@ -108,6 +117,19 @@ class CreateRoom : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    private fun setSeekBar() {
+        create_room_seek_bar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {}
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
+
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                qtd_of_questions_input_value.text = "${getString(R.string.qtd_question_input_title)} - ${progress}"
+            }
+        })
     }
 
     private fun goToRoomInfo(roomId : String) {

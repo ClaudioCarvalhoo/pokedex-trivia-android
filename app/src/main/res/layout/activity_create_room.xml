@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -35,22 +36,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/categories_input_title" />
+                android:text="@string/categories_input_title"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/qtd_of_questions_input_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/qtd_question_input_title" />
+                android:text="@string/qtd_question_input_title"
+                android:textSize="16dp" />
 
             <SeekBar
                 android:id="@+id/create_room_seek_bar"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:max="10"
                 android:min="1" />
@@ -61,8 +68,11 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:enabled="false"
             android:text="@string/create_bttn"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
