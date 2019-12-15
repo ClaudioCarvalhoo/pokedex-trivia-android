@@ -72,11 +72,11 @@ class RoomInfo : AppCompatActivity() {
     }
 
     private fun changeActivity() {
-            val intent = Intent(this, Questions::class.java)
-            val bundle = Bundle()
-            bundle.putSerializable("questions", room?.questions as Serializable)
-            bundle.putString("roomId", room?.id)
-            intent.putExtras(bundle)
-            startActivity(intent)
+        val intent = Intent(this, Questions::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("questions", room?.questions as Serializable)
+        bundle.putString("roomId", room?.id)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

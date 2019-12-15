@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.example.pokequizz.apiHelper.entities.Room
 import com.example.pokequizz.fragments.roomInfo.GeneralFragment
 import com.example.pokequizz.R
+import com.example.pokequizz.fragments.roomInfo.LeaderboardFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
@@ -24,13 +25,11 @@ class RoomInfoAdapter(private val context: Context, fm: FragmentManager, room: R
     private val room = room
 
     override fun getItem(position: Int): Fragment {
-        var instance = GeneralFragment
-
-        when (position) {
-            0 -> instance = GeneralFragment
+        if (position == 2) {
+            return LeaderboardFragment.newInstance(room)
         }
 
-        return instance.newInstance(room)
+        return GeneralFragment.newInstance(room)
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
