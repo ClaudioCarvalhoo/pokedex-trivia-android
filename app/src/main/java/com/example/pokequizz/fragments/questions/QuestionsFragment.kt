@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pokequizz.apiHelper.entities.Question
 import com.example.pokequizz.R
+import com.example.pokequizz.activities.Questions
 import com.example.pokequizz.apiHelper.entities.Alternative
 import com.example.pokequizz.viewModels.QuestionsViewModel
 import com.squareup.picasso.Picasso
@@ -60,7 +61,7 @@ class QuestionsFragment : Fragment() {
             }
 
             root!!.alternatives_radio_group.setOnCheckedChangeListener { group, checkedId ->
-                onClickListener?.invoke(group.tag.toString(), checkedId)
+                Questions.onAlternativeSelection(group.tag.toString(), checkedId)
             }
         })
 
@@ -104,7 +105,7 @@ class QuestionsFragment : Fragment() {
         @JvmStatic
         fun newInstance(question: Question, onClickListener: (String, Int) -> Unit): QuestionsFragment {
             this.question = question
-            this.onClickListener = onClickListener
+//            this.onClickListener = onClickListener
 
             return QuestionsFragment().apply {
                 arguments = Bundle().apply {

@@ -29,6 +29,7 @@ class RoomInfo : AppCompatActivity() {
         setContentView(R.layout.activity_room_info)
 
         setSupportActionBar(room_info_toolbar as Toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val b = intent.extras
         var roomId = b?.getString("roomId").toString()
@@ -72,11 +73,6 @@ class RoomInfo : AppCompatActivity() {
 
         fab.setOnClickListener {
             changeActivity()
-        }
-
-        if (supportActionBar != null) {
-            Log.e("EAE", "EAE")
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
     }
 
