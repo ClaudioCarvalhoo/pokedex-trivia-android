@@ -23,3 +23,5 @@ Utilizar essa arquitetura foi útil para manter controle de que janela deve ser 
 </div>
 
 A mesma arquitetura foi utilizada. Uma peculiridade é que o `QuestionsFragment` recebe um par de respostas já selecionadas e as alternativas da pergunta. Isso se tornou necessário, pois, para evitar _memory leak_, escolhemos remover a referência do _callback_ deste _fragment_. O `ViewPager` sempre mata todas as páginas que não são a próxima e a anterior (para prover uma animação fluida de _scroll_), tendo grande risco de vazamento de memória. Por conta disso, cada _fragment_ tinha que saber que respostas já foram selecionadas, pois, quando forem renderizar as alternativas, já marcar aquelas que já foram seleciondas.
+
+Mais sobre nossa caça de aos _memory leaks_ [aqui](https://github.com/ClaudioCarvalhoo/pokedex-trivia-android/blob/master/relat%C3%B3rio/memoria.md).
